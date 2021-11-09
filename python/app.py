@@ -33,6 +33,18 @@ def get_freq_char(input):
 def quit_func():
     print('Exiting...\n')
 
+def get_stats(my_dict):
+    if my_dict:
+        input_list = []
+        popular_freq = max(input['freq'] for input in my_dict.values())
+        for key, value in my_dict.items():
+            if popular_freq == value['freq']:
+                input_list.append(key)
+        input_list = ', '.join(input_list)
+        print(f'\nStats:\n {my_dict}\n\nMost popular: {input_list}')
+    else:
+        print('No inputs given.')
+
 def stringinate():
     while True:
         inputResult = input('Enter an input string (\'stats\' to see statistics, \'quit\' to exit): ')
@@ -42,11 +54,10 @@ def stringinate():
                 quit_func()
                 break
             elif (inputResult.lower() == "stats"):
-                print('\nStats:\n %s\n' % seen_strings)
+                get_stats(seen_strings)
             else:
                 print('\nInput = %s' % inputResult)
                 print('Length = %s' % len(inputResult))
-
                 if inputResult in seen_strings:
                     seen_strings[inputResult]['freq'] += 1
                 else:
