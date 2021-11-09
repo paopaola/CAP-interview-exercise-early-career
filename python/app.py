@@ -30,13 +30,16 @@ def get_freq_char(input):
     print(f'Highest frequency of chars in the given string is: {max_freq}\nChars with high frequency: {chars}')
     return (max_freq, chars)
 
+def quit_func():
+    print('Exiting...\n')
+
 def stringinate():
     while True:
         inputResult = input('Enter an input string (\'stats\' to see statistics, \'quit\' to exit): ')
         inputResult = inputResult.strip()
         if inputResult:
             if (inputResult.lower() == "quit"):
-                print('Exiting...\n')
+                quit_func()
                 break
             elif (inputResult.lower() == "stats"):
                 print('\nStats:\n %s\n' % seen_strings)
