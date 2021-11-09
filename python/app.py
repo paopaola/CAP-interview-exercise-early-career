@@ -48,6 +48,10 @@ def get_stats(my_dict):
     else:
         print('No inputs given.')
 
+#check if given input is palindrome
+def is_palindrome(input):
+    return input == input[::-1]
+
 def stringinate():
     while True:
         inputResult = input('Enter an input string (\'stats\' to see statistics, \'quit\' to exit): ')
@@ -68,6 +72,7 @@ def stringinate():
                     seen_strings[inputResult]['freq'] = 1
                     seen_strings[inputResult]['len'] = len(inputResult)
                     seen_strings[inputResult]['char_freq'] = get_freq_char(inputResult.lower())
+                    seen_strings[inputResult]['is_palindrome'] = is_palindrome(inputResult)
         else:
             print('No input given.')
 
