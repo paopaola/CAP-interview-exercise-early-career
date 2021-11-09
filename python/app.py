@@ -35,13 +35,16 @@ def quit_func():
 
 def get_stats(my_dict):
     if my_dict:
+        # get most popular value
         input_list = []
         popular_freq = max(input['freq'] for input in my_dict.values())
         for key, value in my_dict.items():
             if popular_freq == value['freq']:
                 input_list.append(key)
         input_list = ', '.join(input_list)
-        print(f'\nStats:\n {my_dict}\n\nMost popular: {input_list}')
+        # get longest string. Only one string it is shown if there are 2 or more strings with same length
+        longest_input = max(my_dict, key=lambda input:my_dict[input]['len'])
+        print(f'\nStats:\n {my_dict}\n\nMost popular: {input_list}\n\nLongest input received: {longest_input}\n')
     else:
         print('No inputs given.')
 
